@@ -49,8 +49,8 @@ export default function Home({repos}:{repos:Repo[]}){
 
     <div className="masonry-root">
       <div className="max-w-5xl mx-auto px-4 lg:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          <header className="card hero-vignette col-span-2 lg:col-span-2 h-[260px]" style={{position:'relative',overflow:'hidden'}}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[130px] gap-3">
+          <header className="card hero-vignette col-span-2 lg:col-span-2 row-span-2" style={{position:'relative',overflow:'hidden'}}>
           <Particles />
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -67,7 +67,7 @@ export default function Home({repos}:{repos:Repo[]}){
           </div>
           </header>
 
-          <section id="about" className="card col-span-2 lg:col-span-1 h-[260px]">
+          <section id="about" className="card col-span-2 lg:col-span-1 row-span-2">
             <h2 className="text-xl font-semibold">About</h2>
             <div className="scroll text-sm leading-relaxed mt-2 text-gray-300">
               <p>I’m Fernando Marques, a passionate Junior Software Developer blending full-stack engineering, AI integration, and cloud development. My hands-on experience spans building mobile and web applications, designing robust backends, integrating cloud services (Firebase, Google Cloud), and delivering production-ready AI solutions like TaxBot — an EU tax advisory assistant.</p>
@@ -76,7 +76,7 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <section id="timeline" className="card col-span-2 lg:col-span-1 h-[260px]">
+          <section id="timeline" className="card col-span-2 lg:col-span-1 row-span-2">
             <h2 className="text-xl font-semibold">Timeline</h2>
             <div className="scroll mt-3">
               <Timeline items={[
@@ -87,7 +87,7 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <section id="skills" className="card col-span-2 lg:col-span-1 h-[520px]">
+          <section id="skills" className="card col-span-2 lg:col-span-1 row-span-4">
           <h2 className="text-xl font-semibold">Skills & Stack</h2>
           <div className="mt-3">
           <h4 className="text-sm muted">Languages</h4>
@@ -117,7 +117,7 @@ export default function Home({repos}:{repos:Repo[]}){
         </div>
           </section>
 
-          <section id="projects" className="card col-span-2 lg:col-span-2 h-[260px]">
+          <section id="projects" className="card col-span-2 lg:col-span-2 row-span-2">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Projects</h2>
           <div>
@@ -133,35 +133,37 @@ export default function Home({repos}:{repos:Repo[]}){
         )}
           </section>
 
-          <section id="experience" className="card col-span-2 lg:col-span-1 h-[260px]">
+          <section id="experience" className="card col-span-2 lg:col-span-1 row-span-2">
             <h2 className="text-xl font-semibold">Experience</h2>
             <div className="scroll mt-3">
               <div className="timeline-item">
-                <div className="meta"><strong>AI Research Intern</strong> — INFONET (Mar 2025 - May 2025)</div>
-                <div className="text-gray-400">Worked on hands-on AI projects, model development and cloud deployment.</div>
+                <div className="meta"><strong>AI Solution Builder (Internship)</strong> — INFONET (Mar 2025 - May 2025)</div>
+                <div className="text-gray-400">Hands-on AI development and deployment: models, experiments, and cloud delivery.</div>
               </div>
             </div>
           </section>
 
-          <section id="education" className="card col-span-2 lg:col-span-1 h-[260px]">
+          <section id="education" className="card col-span-2 lg:col-span-1 row-span-2">
             <h2 className="text-xl font-semibold">Education & Certifications</h2>
             <div className="scroll">
               <div className="mt-3 timeline-item">
                 <div className="meta"><strong>Instituto Politécnico de Bragança</strong> — Master's degree, Informatics (Sep 2024 - Present)</div>
                 <div className="text-gray-400">Software Development focus. Courses: Cloud, AI, Systems.</div>
               </div>
-              <div className="mt-3 timeline-item">
-                <div className="meta"><strong>Licenses & certificates</strong></div>
-                <ul className="text-gray-400 list-disc ml-5 mt-2">
-                  <li>Advanced React — Meta</li>
-                  <li>React Native — Meta</li>
-                  <li>AI Solution Builder — INFONET</li>
-                </ul>
-              </div>
             </div>
           </section>
 
-          <footer className="card col-span-2 lg:col-span-1 h-[120px]">
+          <section id="certifications" className="card col-span-2 lg:col-span-1 row-span-2">
+            <h2 className="text-xl font-semibold">Certifications</h2>
+            <div className="scroll">
+              <ul className="text-gray-300 list-disc ml-5 mt-2">
+                <li>Advanced React — Meta</li>
+                <li>React Native — Meta</li>
+              </ul>
+            </div>
+          </section>
+
+          <footer className="card col-span-2 lg:col-span-1 row-span-1">
             <h2 className="text-xl font-semibold">Contact</h2>
             <div className="mt-3 flex gap-2 flex-wrap">
               <a className="skill-badge" href="mailto:you@example.com">Email</a>

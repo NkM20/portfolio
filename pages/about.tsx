@@ -11,12 +11,11 @@ export default function About(){
 
   const certifications: string[] = [
     'Advanced React — Meta',
-    'React Native — Meta',
-    'AI Solution Builder — INFONET'
+    'React Native — Meta'
   ]
 
   const experience: TimelineItem[] = [
-    { period: 'Mar 2025 — May 2025', title: 'AI Research Intern', org: 'INFONET', details: 'Model development, experiments and deployment.' },
+    { period: 'Mar 2025 — May 2025', title: 'AI Solution Builder (Internship)', org: 'INFONET', details: 'Hands-on AI development and deployment: models, experiments, and cloud delivery.' },
   ]
 
   return (
