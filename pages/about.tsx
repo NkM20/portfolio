@@ -15,6 +15,10 @@ export default function About(){
     'AI Solution Builder — INFONET'
   ]
 
+  const experience: TimelineItem[] = [
+    { period: 'Mar 2025 — May 2025', title: 'AI Research Intern', org: 'INFONET', details: 'Model development, experiments and deployment.' },
+  ]
+
   return (
     <div className="max-w-6xl mx-auto p-6">
       <Head><title>About — Fernando Marques</title></Head>
@@ -34,6 +38,22 @@ export default function About(){
           <h2 className="text-xl font-semibold">Education</h2>
           <div className="scroll mt-3">
             <Timeline items={education} />
+          </div>
+        </aside>
+
+        <section className="card lg:col-span-2">
+          <h2 className="text-xl font-semibold">Experience</h2>
+          <div className="scroll mt-3">
+            <Timeline items={experience} />
+          </div>
+        </section>
+
+        <aside className="card lg:col-span-1">
+          <h2 className="text-xl font-semibold">Highlights</h2>
+          <div className="scroll mt-3 flex flex-wrap gap-2">
+            {['Full‑stack','React Native','Next.js','Firebase','GCP','AI/LLMs','CTF'].map(tag => (
+              <span key={tag} className="skill-badge text-sm">{tag}</span>
+            ))}
           </div>
         </aside>
 
