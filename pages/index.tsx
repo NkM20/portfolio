@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard'
 import {IconGitHub, IconLinkedIn, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconSQL} from '../components/Icons'
 import Timeline, {TimelineItem} from '../components/Timeline'
 import Logo from '../components/Logo'
+import Particles from '../components/Particles'
 
 type Repo = {name:string,description:string|null,html_url:string,language:string|null,stargazers_count:number}
 
@@ -21,7 +22,8 @@ export default function Home({repos}:{repos:Repo[]}){
   return (
     <div className="max-w-4xl mx-auto p-8">
       <Head><title>Fernando Marques — Full-Stack Developer</title></Head>
-      <header className="card mb-6">
+      <header className="card mb-6 hero-vignette" style={{position:'relative',overflow:'hidden'}}>
+        <Particles />
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Logo />
