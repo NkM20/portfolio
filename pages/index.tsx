@@ -1,28 +1,11 @@
 import Head from 'next/head'
 import type {GetStaticProps} from 'next'
 import fetchPinnedOrRecent from '../lib/github'
+import ProjectCard from '../components/ProjectCard'
 
 type Repo = {name:string,description:string|null,html_url:string,language:string|null,stargazers_count:number}
 
 import {useEffect,useState} from 'react'
-
-function ProjectCard({repo}:{repo:Repo}){
-  return (
-    <article className="project-card card">
-      <div className="flex justify-between items-start">
-        <div>
-          <h3 className="text-blue-300 font-mono">{repo.name}</h3>
-          <p className="text-gray-400">{repo.description}</p>
-        </div>
-        <div className="meta text-sm">
-          <div>{repo.language}</div>
-          <div>⭐ {repo.stargazers_count||0}</div>
-        </div>
-      </div>
-      <div className="mt-3"><a className="text-accent" href={repo.html_url} target="_blank" rel="noreferrer">Repository</a></div>
-    </article>
-  )
-}
 
 export default function Home({repos}:{repos:Repo[]}){
   const [text,setText] = useState('')
