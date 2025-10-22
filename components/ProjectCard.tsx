@@ -30,17 +30,34 @@ export default function ProjectCard({repo}:{repo:Repo}){
     return <IconGitHub className="w-4 h-4 inline-block mr-1" />
   }
 
+  const langClass = (()=>{
+    const l = (repo.language||'').toLowerCase()
+    if(l.includes('typescript')) return 'lang-ts'
+    if(l.includes('javascript')) return 'lang-js'
+    if(l.includes('python')) return 'lang-py'
+    if(l.includes('node')) return 'lang-node'
+    return 'lang-default'
+  })()
+
   return (
-    <div className="project-card card">
-      <div className="flex items-center justify-between mb-3">
+    <div className="project-card">
+      <div className="titlebar">
+        <div className="traffic"><span className="dot red"/><span className="dot yellow"/><span className="dot green"/></div>
+      </div>
+      <div className="flex items-start justify-between mb-3">
         <div>
-          <h3 className="hero-title">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
             <TechIcon /> {repo.name}
-            {repo.language ? <span className="tech-badge">{repo.language}</span> : null}
           </h3>
+          {repo.language ? (
+            <div className="muted text-sm mt-1 flex items-center">
+              <span className={`lang-dot ${langClass}`}/>
+              <span>{repo.language}</span>
+            </div>
+          ) : null}
           <div className="muted text-sm">{repo.description}</div>
         </div>
-        <div className="meta text-sm text-right">
+        <div className="meta text-sm text-right ml-4">
           <div className="mb-2">⭐ {repo.stargazers_count||0}</div>
           <div className="flex gap-2 justify-end">
             <button aria-expanded={open} onClick={()=>setOpen(v=>!v)} className="skill-badge">{open? 'Hide' : 'Preview'}</button>

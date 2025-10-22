@@ -162,7 +162,12 @@ export default function Home({repos}:{repos:Repo[]}){
           </section>
 
           <footer className="card col-span-2 lg:col-span-1 h-[120px]">
-            <pre className="console">Contact: you@example.com | GitHub: https://github.com/NkM20</pre>
+            <h2 className="text-xl font-semibold">Contact</h2>
+            <div className="mt-3 flex gap-2 flex-wrap">
+              <a className="skill-badge" href="mailto:you@example.com">Email</a>
+              <a className="skill-badge" href="https://github.com/NkM20" target="_blank" rel="noreferrer">GitHub</a>
+              <a className="skill-badge" href="https://www.linkedin.com/in/fjfmarques" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
           </footer>
         </div>
       </div>
