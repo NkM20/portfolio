@@ -4,45 +4,19 @@ import Nav from '../components/Nav'
 import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind, IconNext, IconFirebase, IconMongo, IconSQL} from '../components/Icons'
 
 export default function Tools(){
-  const groups = [
-    { title: 'Languages', span: 'lg:col-span-2 lg:row-span-2', items: [
-      {name:'JavaScript',icon:<IconJS className="icon"/>},
-      {name:'TypeScript',icon:<IconTS className="icon"/>},
-      {name:'Python',icon:<IconPython className="icon"/>},
-      {name:'C#',icon:null},
-      {name:'C++',icon:null},
-    ]},
-    { title: 'Frontend', span: 'lg:col-span-2 lg:row-span-2', items: [
-      {name:'React',icon:<IconReact className="icon"/>},
-      {name:'Next.js',icon:<IconNext className="icon"/>},
-      {name:'Tailwind',icon:<IconTailwind className="icon"/>},
-    ]},
-    { title: 'Mobile', span: 'lg:col-span-1 lg:row-span-1', items: [
-      {name:'React Native',icon:<IconReact className="icon"/>},
-    ]},
-    { title: 'Backend & APIs', span: 'lg:col-span-2 lg:row-span-2', items: [
-      {name:'Node.js',icon:<IconNode className="icon"/>},
-      {name:'REST',icon:null},
-      {name:'Express',icon:null},
-    ]},
-    { title: 'Cloud', span: 'lg:col-span-2 lg:row-span-2', items: [
-      {name:'Firebase',icon:<IconFirebase className="icon"/>},
-      {name:'Google Cloud',icon:null},
-      {name:'Cloud Functions',icon:null},
-    ]},
-    { title: 'Databases', span: 'lg:col-span-2 lg:row-span-1', items: [
-      {name:'MySQL',icon:<IconSQL className="icon"/>},
-      {name:'PL/SQL',icon:<IconSQL className="icon"/>},
-      {name:'MongoDB',icon:<IconMongo className="icon"/>},
-    ]},
-    { title: 'DevOps', span: 'lg:col-span-1 lg:row-span-1', items: [
-      {name:'Docker',icon:<IconDocker className="icon"/>},
-      {name:'Git',icon:<IconGit className="icon"/>},
-    ]},
-    { title: 'Design & Tools', span: 'lg:col-span-2 lg:row-span-1', items: [
-      {name:'Figma',icon:null},
-      {name:'VS Code',icon:null},
-    ]},
+  const items = [
+    { name:'React', icon:<IconReact className="w-10 h-10"/>, desc:'UI library for building interactive interfaces', link:'https://react.dev' },
+    { name:'Next.js', icon:<IconNext className="w-10 h-10"/>, desc:'React framework for production-grade apps', link:'https://nextjs.org' },
+    { name:'Tailwind CSS', icon:<IconTailwind className="w-10 h-10"/>, desc:'Utility-first CSS framework', link:'https://tailwindcss.com' },
+    { name:'TypeScript', icon:<IconTS className="w-10 h-10"/>, desc:'Typed superset of JavaScript', link:'https://www.typescriptlang.org' },
+    { name:'JavaScript', icon:<IconJS className="w-10 h-10"/>, desc:'Language of the web', link:'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+    { name:'Node.js', icon:<IconNode className="w-10 h-10"/>, desc:'Runtime for building servers and tools', link:'https://nodejs.org' },
+    { name:'Python', icon:<IconPython className="w-10 h-10"/>, desc:'General-purpose language for scripts and AI', link:'https://www.python.org' },
+    { name:'Docker', icon:<IconDocker className="w-10 h-10"/>, desc:'Containerization for apps and services', link:'https://www.docker.com' },
+    { name:'Git', icon:<IconGit className="w-10 h-10"/>, desc:'Version control', link:'https://git-scm.com' },
+    { name:'Firebase', icon:<IconFirebase className="w-10 h-10"/>, desc:'Backend-as-a-service by Google', link:'https://firebase.google.com' },
+    { name:'MongoDB', icon:<IconMongo className="w-10 h-10"/>, desc:'NoSQL database', link:'https://www.mongodb.com' },
+    { name:'MySQL', icon:<IconSQL className="w-10 h-10"/>, desc:'Relational database', link:'https://www.mysql.com' },
   ]
 
   return (
@@ -61,22 +35,33 @@ export default function Tools(){
           <div className="divider"/>
       </header>
 
-      <section className="mb-2">
-        <div className="grid grid-cols-2 lg:grid-cols-6 auto-rows-[120px] gap-3">
-          {groups.map((g)=> (
-            <div key={g.title} className={`tool-card card ${g.span}`}>
-              <div className="title">{g.title}</div>
-              <div className="tool-tags">
-                {g.items.map(it => (
-                  <span key={it.name} className="tag">
-                    {it.icon}
-                    <span>{it.name}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+      <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="card rounded-[30px] p-5 sm:p-8 col-span-2 lg:col-span-2 flex flex-col gap-3 min-h-[260px] tool-hero">
+          <Logo />
+          <div>
+            <h2 className="text-2xl font-semibold">Tech & Tools</h2>
+            <p className="muted">A snapshot of the languages, frameworks and platforms I use regularly.</p>
+          </div>
         </div>
+        {items.map((item)=> (
+          <div key={item.name} className="card tool-item rounded-[30px] flex flex-col justify-center min-h-[280px] relative">
+            <div className="m-5">
+              <div className="w-12 h-12 flex items-center justify-center absolute inset-x-0 top-0 ml-6 mt-6">
+                {item.icon}
+              </div>
+              <div className="mt-4 text-left w-full mb-3">
+                <h3 className="text-xl font-semibold">{item.name}</h3>
+                <p className="muted text-sm mt-1">{item.desc}</p>
+              </div>
+              <a href={`${item.link}`} target="_blank" rel="noreferrer" className="tool-arrow">
+                <div className="arrow-circle">
+                  <span className="sr-only">Open {item.name}</span>
+                  →
+                </div>
+              </a>
+            </div>
+          </div>
+        ))}
       </section>
     </div>
   )

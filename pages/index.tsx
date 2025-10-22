@@ -89,7 +89,7 @@ export default function Home({repos}:{repos:Repo[]}){
 
           <section id="skills" className="card col-span-2 lg:col-span-1 row-span-4">
           <h2 className="text-xl font-semibold">Skills & Stack</h2>
-          <div className="mt-3">
+          <div className="scroll mt-2">
           <h4 className="text-sm muted">Languages</h4>
           <div className="mt-2 flex flex-wrap gap-2">
             {[{name:'JavaScript',icon:<IconJS/>},{name:'TypeScript',icon:<IconTS/>},{name:'Python',icon:<IconPython/>},{name:'C#',icon:null},{name:'C++',icon:null},{name:'PHP',icon:null}].map(s=> (<span key={s.name} className="skill-badge">{s.icon} <span className="ml-2">{s.name}</span></span>))}
@@ -124,13 +124,15 @@ export default function Home({repos}:{repos:Repo[]}){
             <button onClick={()=>setShowProjects(v=>!v)} className="skill-badge">{showProjects? 'Hide projects' : `Show projects (${repos.length})`}</button>
           </div>
         </div>
-        {showProjects ? (
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-            {repos.map(r=> <ProjectCard key={r.html_url} repo={r} />)}
-          </div>
-        ) : (
-          <div className="muted mt-3">Projects are hidden by default — click “Show projects” to reveal a compact list.</div>
-        )}
+        <div className="scroll mt-2">
+          {showProjects ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {repos.map(r=> <ProjectCard key={r.html_url} repo={r} />)}
+            </div>
+          ) : (
+            <div className="muted">Projects are hidden by default — click “Show projects” to reveal a compact list.</div>
+          )}
+        </div>
           </section>
 
           <section id="experience" className="card col-span-2 lg:col-span-1 row-span-2">
@@ -165,7 +167,7 @@ export default function Home({repos}:{repos:Repo[]}){
 
           <footer className="card col-span-2 lg:col-span-1 row-span-1">
             <h2 className="text-xl font-semibold">Contact</h2>
-            <div className="mt-3 flex gap-2 flex-wrap">
+            <div className="scroll mt-2 flex gap-2 flex-wrap">
               <a className="skill-badge" href="mailto:you@example.com">Email</a>
               <a className="skill-badge" href="https://github.com/NkM20" target="_blank" rel="noreferrer">GitHub</a>
               <a className="skill-badge" href="https://www.linkedin.com/in/fjfmarques" target="_blank" rel="noreferrer">LinkedIn</a>
