@@ -2,7 +2,7 @@ import Head from 'next/head'
 import type {GetStaticProps} from 'next'
 import fetchPinnedOrRecent from '../lib/github'
 import ProjectCard from '../components/ProjectCard'
-import {IconGitHub, IconLinkedIn, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconSQL} from '../components/Icons'
+import {IconGitHub, IconLinkedIn, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconMySQL, IconOracle} from '../components/Icons'
 import Timeline, {TimelineItem} from '../components/Timeline'
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
@@ -107,7 +107,7 @@ export default function Home({repos}:{repos:Repo[]}){
 
           <h4 className="text-sm muted mt-4">Data & Databases</h4>
           <div className="mt-2 flex flex-wrap gap-2">
-            {[{name:'MySQL',icon:<IconSQL/>},{name:'PL/SQL',icon:<IconSQL/>},{name:'MongoDB',icon:<IconMongo/>}].map(s=> (<span key={s.name} className="skill-badge">{s.icon} <span className="ml-2">{s.name}</span></span>))}
+            {[{name:'MySQL',icon:<IconMySQL/>},{name:'PL/SQL',icon:<IconOracle/>},{name:'MongoDB',icon:<IconMongo/>}].map(s=> (<span key={s.name} className="skill-badge">{s.icon} <span className="ml-2">{s.name}</span></span>))}
           </div>
 
           <h4 className="text-sm muted mt-4">Tools & DevOps</h4>

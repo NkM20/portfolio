@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
-import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind, IconNext, IconFirebase, IconMongo, IconSQL, IconFlutter, IconKotlin, IconDuckDB, IconApex, IconSAP, IconAssembly} from '../components/Icons'
+import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind, IconNext, IconFirebase, IconMongo, IconMySQL, IconFlutter, IconKotlin, IconDuckDB, IconSalesforce, IconSAP, IconAssembly, IconPostgres} from '../components/Icons'
 
 export default function Tools(){
   const items = [
@@ -15,15 +15,15 @@ export default function Tools(){
     { name:'Docker', icon:<IconDocker className="w-10 h-10"/>, desc:'Containerization for apps and services', link:'https://www.docker.com' },
     { name:'Git', icon:<IconGit className="w-10 h-10"/>, desc:'Version control', link:'https://git-scm.com' },
     { name:'Firebase', icon:<IconFirebase className="w-10 h-10"/>, desc:'Backend-as-a-service by Google', link:'https://firebase.google.com' },
-    { name:'MongoDB', icon:<IconMongo className="w-10 h-10"/>, desc:'NoSQL database', link:'https://www.mongodb.com' },
-    { name:'MySQL', icon:<IconSQL className="w-10 h-10"/>, desc:'Relational database', link:'https://www.mysql.com' },
+  { name:'MongoDB', icon:<IconMongo className="w-10 h-10"/>, desc:'NoSQL database', link:'https://www.mongodb.com' },
+  { name:'MySQL', icon:<IconMySQL className="w-10 h-10"/>, desc:'Relational database', link:'https://www.mysql.com' },
     // Added based on user experience
     { name:'Flutter', icon:<IconFlutter className="w-10 h-10"/>, desc:'Cross-platform UI toolkit', link:'https://flutter.dev' },
     { name:'Assembly', icon:<IconAssembly className="w-10 h-10"/>, desc:'Low-level programming language family', link:'https://en.wikipedia.org/wiki/Assembly_language' },
     { name:'Kotlin', icon:<IconKotlin className="w-10 h-10"/>, desc:'Modern language for Android and beyond', link:'https://kotlinlang.org' },
     { name:'DuckDB', icon:<IconDuckDB className="w-10 h-10"/>, desc:'In-process analytical SQL database', link:'https://duckdb.org' },
-    { name:'Apex', icon:<IconApex className="w-10 h-10"/>, desc:'Salesforce-native programming language', link:'https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm' },
-    { name:'SQL', icon:<IconSQL className="w-10 h-10"/>, desc:'Structured Query Language (ANSI/ISO)', link:'https://en.wikipedia.org/wiki/SQL' },
+  { name:'Salesforce Apex', icon:<IconSalesforce className="w-10 h-10"/>, desc:'Salesforce-native programming language', link:'https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm' },
+  { name:'PostgreSQL', icon:<IconPostgres className="w-10 h-10"/>, desc:'Relational database', link:'https://www.postgresql.org' },
     { name:'SAP', icon:<IconSAP className="w-10 h-10"/>, desc:'ERP software suite and platform', link:'https://www.sap.com' },
   ]
 
