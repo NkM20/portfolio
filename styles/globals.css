@@ -82,5 +82,12 @@ body{
 
 .timeline-item{opacity:0;transform:translateY(6px);animation:fadeUp 420ms cubic-bezier(.2,.9,.3,1) both}
 
+/* Logo / emblem */
+.logo{display:inline-block}
+.logo-svg{width:48px;height:48px}
+.logo-star{transform-origin:center;animation:logo-star 4s linear infinite}
+@keyframes logo-star{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(12deg)}100%{transform:translateY(0) rotate(0)}}
+
+
 
 

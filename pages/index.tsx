@@ -4,6 +4,7 @@ import fetchPinnedOrRecent from '../lib/github'
 import ProjectCard from '../components/ProjectCard'
 import {IconGitHub, IconLinkedIn, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconSQL} from '../components/Icons'
 import Timeline, {TimelineItem} from '../components/Timeline'
+import Logo from '../components/Logo'
 
 type Repo = {name:string,description:string|null,html_url:string,language:string|null,stargazers_count:number}
 
@@ -12,7 +13,7 @@ import {useEffect,useState} from 'react'
 export default function Home({repos}:{repos:Repo[]}){
   const [text,setText] = useState('')
   const [showProjects,setShowProjects] = useState(false)
-  const full = `> $ fjfmarques@portfolio:~ echo "Fernando Marques — Full-Stack Developer"`
+  const full = `> $ NkM@portfolio:~ echo "NkM — Full-Stack Developer"`
   useEffect(()=>{
     let i=0;const t=setInterval(()=>{setText(full.slice(0,++i));if(i>=full.length)clearInterval(t)},24);return ()=>clearInterval(t)
   },[])
@@ -22,10 +23,13 @@ export default function Home({repos}:{repos:Repo[]}){
       <Head><title>Fernando Marques — Full-Stack Developer</title></Head>
       <header className="card mb-6">
         <div className="flex items-center justify-between">
-          <div>
-            <div className="cli-prompt">&gt; $ fjfmarques@portfolio:~</div>
-            <h1 className="typing mt-2">{text}</h1>
-            <p className="hero-sub mt-2">Early-career developer building AI-enabled web & mobile experiences · Cloud & Systems</p>
+          <div className="flex items-center gap-4">
+            <Logo />
+            <div>
+              <div className="cli-prompt">&gt; $ NkM@portfolio:~</div>
+              <h1 className="typing mt-2">{text}</h1>
+              <p className="hero-sub mt-2">Early-career developer building AI-enabled web & mobile experiences · Cloud & Systems</p>
+            </div>
           </div>
           <div className="flex gap-2">
             <a className="card skill-badge" href="https://github.com/NkM20" aria-label="GitHub" target="_blank" rel="noreferrer"><IconGitHub/></a>
