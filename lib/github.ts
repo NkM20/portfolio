@@ -1,5 +1,3 @@
-import fetch from 'node-fetch'
-
 type Repo = {
   name: string
   description: string | null
@@ -10,6 +8,7 @@ type Repo = {
 }
 
 export async function fetchPinnedOrRecent(username: string, token?: string, max = 6): Promise<Repo[]> {
+  // Use the built-in fetch available in Next.js runtime instead of node-fetch
   if (token) {
     try {
       const query = `query($login:String!,$n:Int!){user(login:$login){pinnedItems(first:$n,types:REPOSITORY){nodes{...on Repository{name description url primaryLanguage{ name } stargazerCount }}}}}`;
@@ -19,9 +18,17 @@ export async function fetchPinnedOrRecent(username: string, token?: string, max 
         body:JSON.stringify({query,variables:{login:username,n:max}})
       })
       const json = await res.json()
-      const nodes = (((json||{}).data||{}).user||{}).pinnedItems?.nodes || []
-      if (nodes.length>0) return nodes.map((n:any)=>({name:n.name,description:n.description,html_url:n.url,language:n.primaryLanguage?.name,stargazers_count:n.stargazerCount}))
-    } catch(e){
+      const nodes = (((json || {}).data || {}).user || {}).pinnedItems?.nodes || []
+      if (Array.isArray(nodes) && nodes.length > 0) {
+        return nodes.map((n:any) => ({
+          name: n.name,
+          description: n.description,
+          html_url: n.url || n.html_url,
+          language: n.primaryLanguage?.name,
+          stargazers_count: n.stargazerCount || 0
+        }))
+      }
+    } catch (e) {
       // fall through to REST
     }
   }
