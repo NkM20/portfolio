@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {IconGitHub, IconJS, IconTS, IconReact, IconNode, IconTailwind, IconNext, IconPython} from './Icons'
 
 type Repo = {name:string,description?:string|null,html_url?:string,language?:string|null,stargazers_count?:number}
 
@@ -14,35 +15,71 @@ main()`
 export default function ProjectCard({repo}:{repo:Repo}){
   const code = sampleCode(repo.name)
   const lines = code.split('\n')
+  const [open,setOpen] = useState(false)
+
+  const TechIcon = () => {
+    if(!repo.language) return null
+    const lang = (repo.language||'').toLowerCase()
+    if(lang.includes('javascript')) return <IconJS className="w-4 h-4 inline-block mr-1" />
+    if(lang.includes('typescript')) return <IconTS className="w-4 h-4 inline-block mr-1" />
+    if(lang.includes('react')) return <IconReact className="w-4 h-4 inline-block mr-1" />
+    if(lang.includes('next')) return <IconNext className="w-4 h-4 inline-block mr-1" />
+    if(lang.includes('node')) return <IconNode className="w-4 h-4 inline-block mr-1" />
+    if(lang.includes('python')) return <IconPython className="w-4 h-4 inline-block mr-1" />
+    if(lang.includes('tailwind')) return <IconTailwind className="w-4 h-4 inline-block mr-1" />
+    return <IconGitHub className="w-4 h-4 inline-block mr-1" />
+  }
+
   return (
     <div className="project-card card">
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h3 className="text-blue-300 font-mono">{repo.name}</h3>
-          <div className="text-gray-400 text-sm">{repo.description}</div>
+          <h3 className="hero-title">
+            <TechIcon /> {repo.name}
+            {repo.language ? <span className="tech-badge">{repo.language}</span> : null}
+          </h3>
+          <div className="muted text-sm">{repo.description}</div>
         </div>
         <div className="meta text-sm text-right">
-          <div>{repo.language}</div>
-          <div>⭐ {repo.stargazers_count||0}</div>
-        </div>
-      </div>
-
-      <div className="file-explorer">
-        <div className="tabs">
-          <div className="tab active">src/index.js</div>
-          <div className="tab">README.md</div>
-        </div>
-        <div className="code-window">
-          <div className="gutter">
-            {lines.map((_,i)=>(<div key={i} className="line-num">{i+1}</div>))}
+          <div className="mb-2">⭐ {repo.stargazers_count||0}</div>
+          <div className="flex gap-2 justify-end">
+            <button aria-expanded={open} onClick={()=>setOpen(v=>!v)} className="skill-badge">{open? 'Hide' : 'Preview'}</button>
+            <a className="skill-badge" href={repo.html_url} target="_blank" rel="noreferrer">Open</a>
           </div>
-          <pre className="code" aria-hidden="false">
-            {lines.map((l,i)=> <div key={i} className="code-line">{l}</div>)}
-          </pre>
         </div>
       </div>
 
-      <div className="mt-3"><a className="text-accent" href={repo.html_url} target="_blank" rel="noreferrer">Repository</a></div>
+      {open ? (
+        <div className="file-explorer">
+          <div className="tabs">
+            <div className="tab active">src/index.js</div>
+            <div className="tab">README.md</div>
+          </div>
+          <div className="code-window">
+            <div className="gutter">
+              {lines.map((_,i)=>(<div key={i} className="line-num">{i+1}</div>))}
+            </div>
+            <pre className="code" aria-hidden="false">
+              {lines.map((l,i)=> {
+                const trimmed = l.trim()
+                if(trimmed.startsWith('//')){
+                  return <div key={i} className="code-line token-comment">{l}</div>
+                }
+                if(trimmed.includes('function')){
+                  return <div key={i} className="code-line token-keyword">{l}</div>
+                }
+                if(trimmed.includes("console.log")){
+                  return <div key={i} className="code-line token-fn">{l}</div>
+                }
+                if(trimmed.includes("'")){
+                  return <div key={i} className="code-line token-string">{l}</div>
+                }
+                return <div key={i} className="code-line">{l}</div>
+              })}
+            </pre>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
