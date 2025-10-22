@@ -1,31 +1,86 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root{--accent-green:#39ff14}
-body{background:#0b0b0b;color:#dbe7ef}
-.cli-prompt{font-family:var(--font-mono, 'Fira Code'),monospace;color:#9aa3b2}
-.typing{font-family:'Fira Code',monospace;color:var(--accent-green);font-size:1.6rem}
-.typing::after{content:'';display:inline-block;width:10px;height:1.05em;background:var(--accent-green);margin-left:8px;animation:blink 1s steps(2) infinite}
-@keyframes blink{50%{opacity:0}}
-.card{background:linear-gradient(180deg,#0f0f10,#0b0b0b);border:1px solid rgba(255,255,255,0.03);padding:1rem;border-radius:0.5rem}
+:root{
+	--bg-900: #060607;
+	--bg-800: #0b0b0f;
+	--panel: #0f1113;
+	--muted: #9aa3b2;
+	--text: #dbe7ef;
+	--accent-green: #39ff14;
+	--accent-purple: #b084ff;
+	--glass: rgba(255,255,255,0.03);
+}
+
+/* Base layout */
+body{
+	background: radial-gradient(1200px 600px at 10% 10%, rgba(57,255,20,0.03), transparent), linear-gradient(180deg,var(--bg-800),var(--bg-900));
+	color:var(--text);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.cli-prompt{font-family: 'Fira Code', 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;color:var(--muted)}
+.typing{font-family: 'Fira Code', 'JetBrains Mono', monospace;color:var(--accent-green);font-size:1.6rem}
+.typing::after{content:'';display:inline-block;width:2px;height:1.05em;background:var(--accent-green);margin-left:8px;animation:caret 1s steps(2) infinite}
+@keyframes caret{50%{opacity:0}}
+
+.card{background:linear-gradient(180deg,var(--panel),#070708);border:1px solid var(--glass);padding:1rem;border-radius:0.6rem;box-shadow:0 6px 20px rgba(2,6,9,0.6)}
+
+/* Hero & headings */
+.hero-title{font-family: 'Fira Code', monospace;font-size:2rem;color:var(--text);letter-spacing:0.4px}
+.hero-sub{color:var(--muted);font-family: 'Fira Code', monospace}
 
 /* project / skill visuals */
-.skill-badge{background:rgba(255,255,255,0.02);padding:0.35rem 0.6rem;border-radius:6px;font-family:'Fira Code',monospace;color:#caa8ff;border:1px solid rgba(255,255,255,0.02)}
-.project-card{background:#070707;border-left:4px solid rgba(57,255,20,0.06);padding:1rem;border-radius:6px;font-family:'Fira Code',monospace;position:relative}
-.console{background:transparent;color:#9aa3b2;margin:0;font-family:'Fira Code',monospace}
+.skill-badge{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:0.35rem 0.6rem;border-radius:8px;font-family:'Fira Code',monospace;color:#caa8ff;border:1px solid rgba(255,255,255,0.02);transition:transform .12s ease}
+.skill-badge:hover{transform:translateY(-3px)}
+.tech-badge{display:inline-block;background:linear-gradient(90deg,var(--accent-purple),var(--accent-green));padding:0.18rem 0.5rem;border-radius:999px;color:#071017;font-weight:600;font-size:0.75rem;margin-left:8px}
+
+.project-card{background:linear-gradient(180deg,#070708,#050506);border-left:4px solid rgba(57,255,20,0.06);padding:1rem;border-radius:8px;font-family:'Fira Code',monospace;position:relative;transition:transform .18s ease,box-shadow .18s ease}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(2,6,9,0.7)}
+.project-card h3{color:var(--accent-purple)}
+.meta{color:var(--muted);font-size:0.92rem}
+
+.console{background:transparent;color:var(--muted);margin:0;font-family:'Fira Code',monospace}
 .timeline-item{padding-left:12px;border-left:2px solid rgba(255,255,255,0.03);margin-bottom:12px}
-.meta{color:#9aa3b2;font-size:0.92rem}
 
 /* file explorer / code preview */
-.file-explorer{border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);margin-top:8px}
-.tabs{display:flex;gap:6px;padding:8px;background:rgba(255,255,255,0.02)}
-.tab{padding:6px 10px;border-radius:6px;background:transparent;color:var(--muted);font-family:'Fira Code',monospace}
-.tab.active{background:rgba(255,255,255,0.02);box-shadow:0 6px 18px rgba(0,0,0,0.6)}
-.code-window{display:flex;background:#070707}
-.gutter{padding:10px 8px;background:rgba(255,255,255,0.02);color:#6b7280;text-align:right}
+.file-explorer{border-radius:8px;overflow:hidden;border:1px solid var(--glass);margin-top:8px;background:linear-gradient(180deg,#060607,#0a0a0b)}
+.tabs{display:flex;gap:8px;padding:10px;background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent)}
+.tab{padding:6px 12px;border-radius:6px;background:transparent;color:var(--muted);font-family:'Fira Code',monospace;font-size:0.85rem}
+.tab.active{background:rgba(255,255,255,0.02);box-shadow:0 6px 18px rgba(0,0,0,0.6);color:var(--text)}
+.tab::before{content:'\2022';color:var(--accent-green);display:inline-block;margin-right:8px}
+.code-window{display:flex;background:transparent}
+.gutter{padding:10px 12px;background:rgba(255,255,255,0.01);color:#6b7280;text-align:right;min-width:54px}
 .line-num{height:18px;font-size:12px}
-.code{padding:10px;margin:0;overflow:auto;color:#dbe7ef}
+.code{padding:10px;margin:0;overflow:auto;color:var(--text);font-family:'Fira Code',monospace;font-size:13px}
 .code-line{height:18px}
+
+/* small utilities */
+.text-accent{color:var(--accent-green);font-weight:600}
+.muted{color:var(--muted)}
+
+/* syntax-ish tokens for the preview */
+.token-comment{color:#6b7280}
+.token-keyword{color:#ff7ab6}
+.token-fn{color:#f4d35e}
+.token-string{color:#9ee493}
+
+@media (prefers-reduced-motion: reduce){
+	.typing::after, .project-card, .skill-badge{animation:none;transition:none}
+}
+
+/* subtle entrance animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.animate-fade-up{animation:fadeUp 420ms cubic-bezier(.2,.9,.3,1) both}
+
+.skill-badge{transition:transform .12s ease, box-shadow .12s ease}
+.skill-badge:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(2,6,9,0.6)}
+
+.timeline-item{opacity:0;transform:translateY(6px);animation:fadeUp 420ms cubic-bezier(.2,.9,.3,1) both}
+
 
 
