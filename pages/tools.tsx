@@ -1,21 +1,49 @@
 import Head from 'next/head'
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
-import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind} from '../components/Icons'
+import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind, IconNext, IconFirebase, IconMongo, IconSQL} from '../components/Icons'
 
 export default function Tools(){
-  const tools = [
-    {name:'JavaScript',icon:<IconJS/>},
-    {name:'TypeScript',icon:<IconTS/>},
-    {name:'React',icon:<IconReact/>},
-    {name:'Node.js',icon:<IconNode/>},
-    {name:'Python',icon:<IconPython/>},
-    {name:'Docker',icon:<IconDocker/>},
-    {name:'Git',icon:<IconGit/>},
-    {name:'Tailwind CSS',icon:<IconTailwind/>}
+  const groups = [
+    { title: 'Languages', span: 'lg:col-span-2 lg:row-span-2', items: [
+      {name:'JavaScript',icon:<IconJS className="icon"/>},
+      {name:'TypeScript',icon:<IconTS className="icon"/>},
+      {name:'Python',icon:<IconPython className="icon"/>},
+      {name:'C#',icon:null},
+      {name:'C++',icon:null},
+    ]},
+    { title: 'Frontend', span: 'lg:col-span-2 lg:row-span-2', items: [
+      {name:'React',icon:<IconReact className="icon"/>},
+      {name:'Next.js',icon:<IconNext className="icon"/>},
+      {name:'Tailwind',icon:<IconTailwind className="icon"/>},
+    ]},
+    { title: 'Mobile', span: 'lg:col-span-1 lg:row-span-1', items: [
+      {name:'React Native',icon:<IconReact className="icon"/>},
+    ]},
+    { title: 'Backend & APIs', span: 'lg:col-span-2 lg:row-span-2', items: [
+      {name:'Node.js',icon:<IconNode className="icon"/>},
+      {name:'REST',icon:null},
+      {name:'Express',icon:null},
+    ]},
+    { title: 'Cloud', span: 'lg:col-span-2 lg:row-span-2', items: [
+      {name:'Firebase',icon:<IconFirebase className="icon"/>},
+      {name:'Google Cloud',icon:null},
+      {name:'Cloud Functions',icon:null},
+    ]},
+    { title: 'Databases', span: 'lg:col-span-2 lg:row-span-1', items: [
+      {name:'MySQL',icon:<IconSQL className="icon"/>},
+      {name:'PL/SQL',icon:<IconSQL className="icon"/>},
+      {name:'MongoDB',icon:<IconMongo className="icon"/>},
+    ]},
+    { title: 'DevOps', span: 'lg:col-span-1 lg:row-span-1', items: [
+      {name:'Docker',icon:<IconDocker className="icon"/>},
+      {name:'Git',icon:<IconGit className="icon"/>},
+    ]},
+    { title: 'Design & Tools', span: 'lg:col-span-2 lg:row-span-1', items: [
+      {name:'Figma',icon:null},
+      {name:'VS Code',icon:null},
+    ]},
   ]
-
-  const wall = Array.from({length: 24}, (_,i)=> tools[i % tools.length])
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -33,21 +61,23 @@ export default function Tools(){
           <div className="divider"/>
       </header>
 
-      <section className="card mb-6">
-        <h2 className="text-xl font-semibold">Tool Wall</h2>
-          <div className="tool-wall-wrap">
-            <div className="tool-wall mt-3">
-          {wall.map((t,idx)=> (
-            <div key={`${t.name}-${idx}`} className="skill-badge tool-chip flex items-center gap-2 justify-center">
-              {t.icon}
-              <span className="text-sm">{t.name}</span>
+      <section className="mb-2">
+        <div className="grid grid-cols-2 lg:grid-cols-6 auto-rows-[120px] gap-3">
+          {groups.map((g)=> (
+            <div key={g.title} className={`tool-card card ${g.span}`}>
+              <div className="title">{g.title}</div>
+              <div className="tool-tags">
+                {g.items.map(it => (
+                  <span key={it.name} className="tag">
+                    {it.icon}
+                    <span>{it.name}</span>
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
-            </div>
-          </div>
+        </div>
       </section>
-
-      { /* Removed duplicate categorized grid to avoid two sets of tools */ }
     </div>
   )
 }
