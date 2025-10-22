@@ -94,4 +94,53 @@ export const IconSQL = ({className='w-5 h-5'}:{className?:string}) => (
   </svg>
 )
 
+export const IconFlutter = ({className='w-5 h-5'}:{className?:string}) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <path d="M14 3L4 13l3 3L20 3h-6z" fill="#47C5FB"/>
+    <path d="M7 17l3 3 4-4-3-3-4 4z" fill="#00569E"/>
+  </svg>
+)
+
+export const IconKotlin = ({className='w-5 h-5'}:{className?:string}) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <defs>
+      <linearGradient id="kotlinG" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#7F52FF"/>
+        <stop offset="100%" stopColor="#FF8F00"/>
+      </linearGradient>
+    </defs>
+    <rect width="24" height="24" rx="3" fill="url(#kotlinG)"/>
+    <path d="M4 20L12 12 20 20H4z" fill="#fff" opacity=".25"/>
+  </svg>
+)
+
+export const IconDuckDB = ({className='w-5 h-5'}:{className?:string}) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <circle cx="12" cy="12" r="10" fill="#fff3"/>
+    <path d="M8 14c0-2.2 2-4 4.5-4H15c.6 0 1-.4 1-1 0-1.7-1.3-3-3-3-2.8 0-5 2.2-5 5 0 2.8 2.2 5 5 5 1.8 0 3.4-.9 4.3-2.3-.7.2-1.4.3-2.3.3-3.1 0-5.7-1.2-7-3z" fill="#FFF176"/>
+    <path d="M14 10.5c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1z" fill="#000"/>
+  </svg>
+)
+
+export const IconApex = ({className='w-5 h-5'}:{className?:string}) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <path d="M12 3l9 18H3L12 3z" fill="#00A1E0"/>
+    <path d="M12 9l5.5 11H6.5L12 9z" fill="#fff" opacity=".9"/>
+  </svg>
+)
+
+export const IconSAP = ({className='w-5 h-5'}:{className?:string}) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <rect width="24" height="24" rx="3" fill="#0FAAFF"/>
+    <text x="6" y="16" fontSize="8" fill="#fff" fontFamily="Arial, Helvetica, sans-serif" fontWeight="700">SAP</text>
+  </svg>
+)
+
+export const IconAssembly = ({className='w-5 h-5'}:{className?:string}) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <rect x="3" y="3" width="18" height="18" rx="2" fill="#333"/>
+    <path d="M7 16l3-8h2l3 8h-2l-.6-2H9.5L9 16H7zm3-4h2l-1-3-1 3z" fill="#fff"/>
+  </svg>
+)
+
 export default null
