@@ -4,10 +4,9 @@ import React, {useState} from 'react'
 // If the image is missing, it falls back to a simplified SVG eye.
 export default function Logo({ className = 'w-14 h-14' }: { className?: string }) {
   const [loaded, setLoaded] = useState(false)
-  const [src, setSrc] = useState('/ghoul-eye.png')
   return (
     <div className={`logo ghoul ${className}`} aria-hidden>
-      <img src={src} alt="NkM emblem" className="logo-img" style={{display: loaded? 'block':'none' }} onLoad={()=>setLoaded(true)} onError={()=>{ if(src !== '/components/ghoul-eye.png'){ setSrc('/components/ghoul-eye.png') } }} />
+      <img src="/ghoul-eye.png" alt="NkM emblem" className="logo-img" style={{display: loaded? 'block':'none'}} onLoad={()=>setLoaded(true)} />
 
       <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className={`logo-svg fallback ${loaded? 'hidden':''}`} aria-hidden>
         <defs>

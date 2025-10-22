@@ -14,13 +14,19 @@ import {useEffect,useState} from 'react'
 export default function Home({repos}:{repos:Repo[]}){
   const [text,setText] = useState('')
   const [showProjects,setShowProjects] = useState(false)
+  const [intro,setIntro] = useState(false)
   const full = `> $ NkM@portfolio:~ echo "NkM — Full-Stack Developer"`
   useEffect(()=>{
     let i=0;const t=setInterval(()=>{setText(full.slice(0,++i));if(i>=full.length)clearInterval(t)},24);return ()=>clearInterval(t)
   },[])
 
+  useEffect(()=>{
+    const id = setTimeout(()=>setIntro(true),420)
+    return ()=>clearTimeout(id)
+  },[])
+
   return (
-    <div className="max-w-4xl mx-auto p-8">
+  <div className={`max-w-4xl mx-auto p-8 ${intro? 'intro-run':'intro-trigger'}`}>
       <Head><title>Fernando Marques — Full-Stack Developer</title></Head>
       <header className="card mb-6 hero-vignette" style={{position:'relative',overflow:'hidden'}}>
         <Particles />

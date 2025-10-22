@@ -82,6 +82,18 @@ body{
 .stagger > *:nth-child(5){animation-delay:0.30s}
 @keyframes staggerUp{to{opacity:1;transform:none}}
 
+/* hero intro sequence */
+.intro-trigger .logo{transform:translateY(-6px) scale(.98);opacity:0}
+.intro-trigger .typing{opacity:0;transform:translateY(6px)}
+.intro-run .logo{animation:logo-intro 700ms cubic-bezier(.2,.9,.3,1) forwards}
+.intro-run .typing{animation:typing-intro 900ms cubic-bezier(.2,.9,.3,1) forwards 260ms}
+@keyframes logo-intro{to{opacity:1;transform:none}}
+@keyframes typing-intro{to{opacity:1;transform:none}}
+
+/* project card hover crimson overlay */
+.project-card::after{content:'';position:absolute;inset:0;border-radius:8px;pointer-events:none;transition:background .22s ease}
+.project-card:hover::after{background:linear-gradient(180deg, rgba(198,24,24,0.06), rgba(198,24,24,0.02))}
+
 /* subtle entrance animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .animate-fade-up{animation:fadeUp 420ms cubic-bezier(.2,.9,.3,1) both}
