@@ -1,9 +1,28 @@
 import Head from 'next/head'
 import type {GetStaticProps} from 'next'
+import fetchPinnedOrRecent from '../lib/github'
 
 type Repo = {name:string,description:string|null,html_url:string,language:string|null,stargazers_count:number}
 
 import {useEffect,useState} from 'react'
+
+function ProjectCard({repo}:{repo:Repo}){
+  return (
+    <article className="project-card card">
+      <div className="flex justify-between items-start">
+        <div>
+          <h3 className="text-blue-300 font-mono">{repo.name}</h3>
+          <p className="text-gray-400">{repo.description}</p>
+        </div>
+        <div className="meta text-sm">
+          <div>{repo.language}</div>
+          <div>⭐ {repo.stargazers_count||0}</div>
+        </div>
+      </div>
+      <div className="mt-3"><a className="text-accent" href={repo.html_url} target="_blank" rel="noreferrer">Repository</a></div>
+    </article>
+  )
+}
 
 export default function Home({repos}:{repos:Repo[]}){
   const [text,setText] = useState('')
@@ -28,14 +47,7 @@ export default function Home({repos}:{repos:Repo[]}){
       <section className="card mb-6">
         <h2 className="text-xl font-semibold">Projects</h2>
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {repos.map(r=> (
-            <article key={r.html_url} className="project-card card">
-              <h3 className="text-blue-300 font-mono">{r.name}</h3>
-              <p className="text-gray-400">{r.description}</p>
-              <div className="mt-2 text-sm text-gray-400">{r.language} • ⭐ {r.stargazers_count}</div>
-              <div className="mt-2"><a className="text-accent" href={r.html_url} target="_blank" rel="noreferrer">Repository</a></div>
-            </article>
-          ))}
+          {repos.map(r=> <ProjectCard key={r.html_url} repo={r} />)}
         </div>
       </section>
 
