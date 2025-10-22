@@ -24,6 +24,14 @@ export default function About(){
       <Head><title>About — Fernando Marques</title></Head>
       <Nav />
 
+      <header className="card page-header mb-6">
+        <div>
+          <h1 className="title">About</h1>
+          <p className="subtitle">Overview, education, and experience.</p>
+        </div>
+        <div className="divider"/>
+      </header>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <section className="card lg:col-span-2">
           <h1 className="text-2xl font-semibold">About</h1>

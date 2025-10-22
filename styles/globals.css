@@ -56,6 +56,9 @@ body{
 .skill-badge{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:0.45rem 0.75rem;border-radius:10px;font-family:'Inter',sans-serif;color:var(--text);border:1px solid rgba(255,255,255,0.02);transition:transform .14s ease, box-shadow .14s ease}
 .skill-badge:hover{transform:translateY(-4px);box-shadow:0 12px 30px var(--accent-glow)}
 .skill-badge.active{background:rgba(214,58,58,0.08);border-color:rgba(214,58,58,0.18)}
+.page-header .title{font-size:1.5rem;font-weight:600}
+.page-header .subtitle{color:var(--muted);margin-top:2px}
+.page-header .divider{height:1px;background:rgba(255,255,255,0.06);border-radius:999px;margin:10px 0}
 .tech-badge{display:inline-block;background:linear-gradient(90deg,var(--accent-crimson-2),var(--accent-crimson));padding:0.18rem 0.5rem;border-radius:999px;color:#071017;font-weight:600;font-size:0.75rem;margin-left:8px}
 
 .project-card{background:linear-gradient(180deg,#070708,#050506);padding:1.1rem;border-radius:14px;font-family:'JetBrains Mono',monospace;position:relative;transition:transform .18s ease,box-shadow .18s ease, border-color .18s ease; border:1px solid rgba(255,255,255,0.04)}
@@ -131,7 +134,7 @@ body{
 @keyframes typing-intro{to{opacity:1;transform:none}}
 
 /* project card hover crimson overlay */
-.project-card::after{content:'';position:absolute;inset:0;border-radius:10px;pointer-events:none;transition:background .22s ease}
+.project-card::after{content:'';position:absolute;inset:0;border-radius:14px;pointer-events:none;transition:background .22s ease}
 .project-card:hover::after{background:linear-gradient(180deg, var(--accent-glow), rgba(198,24,24,0.02))}
 
 /* subtle entrance animations */
@@ -241,6 +244,10 @@ body{
 .tool-chip:nth-child(2n){transform:rotate(2deg)}
 .tool-chip:nth-child(3n){transform:rotate(-1deg)}
 .tool-chip:hover{transform:rotate(0deg) translateY(-3px);box-shadow:0 12px 30px var(--accent-glow)}
+.tool-wall-wrap{position:relative;padding:6px;border-radius:12px}
+.tool-wall-wrap::before{content:'';position:absolute;inset:0;border-radius:12px;pointer-events:none;background:
+	radial-gradient(600px 300px at 20% 0%, rgba(214,58,58,0.06), transparent),
+	radial-gradient(500px 300px at 80% 100%, rgba(214,58,58,0.05), transparent)}
 
 
 

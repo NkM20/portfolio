@@ -23,25 +23,28 @@ export default function Tools(){
       <Nav />
 
       <header className="card mb-6">
-        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 page-header">
           <Logo />
           <div>
-            <h1 className="text-2xl font-semibold">Tools & Stack</h1>
-            <p className="muted mt-1">My primary tools and frameworks — curated and anime-inspired.</p>
+              <h1 className="title">Tools & Stack</h1>
+              <p className="subtitle">Languages, frameworks, and platforms I use most.</p>
           </div>
         </div>
+          <div className="divider"/>
       </header>
 
       <section className="card mb-6">
         <h2 className="text-xl font-semibold">Tool Wall</h2>
-        <div className="tool-wall mt-3">
+          <div className="tool-wall-wrap">
+            <div className="tool-wall mt-3">
           {wall.map((t,idx)=> (
             <div key={`${t.name}-${idx}`} className="skill-badge tool-chip flex items-center gap-2 justify-center">
               {t.icon}
               <span className="text-sm">{t.name}</span>
             </div>
           ))}
-        </div>
+            </div>
+          </div>
       </section>
 
       <section className="card">
