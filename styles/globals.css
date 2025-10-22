@@ -221,6 +221,15 @@ body{
 	.masonry-grid{grid-template-columns:repeat(3,1fr);gap:14px}
 }
 
+/* Tools wall (angled chips) */
+.tool-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (min-width:640px){.tool-wall{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1024px){.tool-wall{grid-template-columns:repeat(6,1fr)}}
+.tool-chip{transform:rotate(-2deg);transition:transform .15s ease, box-shadow .15s ease}
+.tool-chip:nth-child(2n){transform:rotate(2deg)}
+.tool-chip:nth-child(3n){transform:rotate(-1deg)}
+.tool-chip:hover{transform:rotate(0deg) translateY(-3px);box-shadow:0 12px 30px var(--accent-glow)}
+
 
 
 

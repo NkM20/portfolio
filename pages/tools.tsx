@@ -15,6 +15,8 @@ export default function Tools(){
     {name:'Tailwind CSS',icon:<IconTailwind/>}
   ]
 
+  const wall = Array.from({length: 24}, (_,i)=> tools[i % tools.length])
+
   return (
     <div className="max-w-6xl mx-auto p-6">
       <Head><title>Tools — Fernando Marques</title></Head>
@@ -29,6 +31,18 @@ export default function Tools(){
           </div>
         </div>
       </header>
+
+      <section className="card mb-6">
+        <h2 className="text-xl font-semibold">Tool Wall</h2>
+        <div className="tool-wall mt-3">
+          {wall.map((t,idx)=> (
+            <div key={`${t.name}-${idx}`} className="skill-badge tool-chip flex items-center gap-2 justify-center">
+              {t.icon}
+              <span className="text-sm">{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="card">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
