@@ -47,16 +47,7 @@ export default function Tools(){
           </div>
       </section>
 
-      <section className="card">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {tools.map(t=> (
-            <div key={t.name} className="skill-badge flex items-center gap-2">
-              {t.icon}
-              <span>{t.name}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      { /* Removed duplicate categorized grid to avoid two sets of tools */ }
     </div>
   )
 }
