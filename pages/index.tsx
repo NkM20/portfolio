@@ -2,7 +2,7 @@ import Head from 'next/head'
 import type {GetStaticProps} from 'next'
 import fetchPinnedOrRecent from '../lib/github'
 import ProjectCard from '../components/ProjectCard'
-import {IconGitHub, IconLinkedIn, IconGmail, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconMySQL, IconOracle} from '../components/Icons'
+import {IconGitHub, IconLinkedIn, IconGmail, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconMySQL, IconOracle, IconFigma, IconVSCode} from '../components/Icons'
 import { FiSun, FiMoon } from 'react-icons/fi'
 import Timeline, {TimelineItem} from '../components/Timeline'
 import Logo from '../components/Logo'
@@ -18,6 +18,7 @@ export default function Home({repos}:{repos:Repo[]}){
   const [showProjects,setShowProjects] = useState(false)
   const [intro,setIntro] = useState(false)
   const [theme,setTheme] = useState<'dark'|'light'>('dark')
+  const [reposClient,setReposClient] = useState<Repo[]>(repos || [])
   const full = `> $ NkM@portfolio:~ echo "NkM — Full-Stack Developer"`
   useEffect(()=>{
     let i=0;const t=setInterval(()=>{setText(full.slice(0,++i));if(i>=full.length)clearInterval(t)},24);return ()=>clearInterval(t)
@@ -44,6 +45,23 @@ export default function Home({repos}:{repos:Repo[]}){
       localStorage.setItem('theme', next)
     }
   }
+
+  // Fallback client fetch for repos if build-time result is empty
+  useEffect(()=>{
+    const run = async()=>{
+      if(!showProjects) return
+      if(reposClient && reposClient.length > 0) return
+      try{
+        const res = await fetch('https://api.github.com/users/NkM20/repos?per_page=6&sort=updated', { headers: { 'User-Agent': 'next-portfolio' } })
+        const data = await res.json()
+        if(Array.isArray(data)){
+          const mapped = data.map((r:any)=>({name:r.name,description:r.description,html_url:r.html_url,language:r.language,stargazers_count:r.stargazers_count}))
+          setReposClient(mapped)
+        }
+      }catch(e){/* ignore */}
+    }
+    run()
+  },[showProjects])
 
   // add a class to reveal main sections after typing is finished
   useEffect(()=>{
@@ -143,7 +161,7 @@ export default function Home({repos}:{repos:Repo[]}){
 
           <h4 className="text-sm muted mt-4">Tools & DevOps</h4>
           <div className="mt-2 flex flex-wrap gap-2">
-            {[{name:'Docker',icon:<IconDocker/>},{name:'Git',icon:<IconGit/>},{name:'Figma',icon:null},{name:'VS Code',icon:null}].map(s=> (<span key={s.name} className="skill-badge">{s.icon} <span className="ml-2">{s.name}</span></span>))}
+            {[{name:'Docker',icon:<IconDocker/>},{name:'Git',icon:<IconGit/>},{name:'Figma',icon:<IconFigma/>},{name:'VS Code',icon:<IconVSCode/>}].map(s=> (<span key={s.name} className="skill-badge">{s.icon} <span className="ml-2">{s.name}</span></span>))}
           </div>
         </div>
           </section>
@@ -152,13 +170,13 @@ export default function Home({repos}:{repos:Repo[]}){
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Projects</h2>
           <div>
-            <button onClick={()=>setShowProjects(v=>!v)} className="skill-badge">{showProjects? 'Hide projects' : `Show projects (${repos.length})`}</button>
+            <button onClick={()=>setShowProjects(v=>!v)} className="skill-badge">{showProjects? 'Hide projects' : `Show projects (${(reposClient?.length||repos.length)})`}</button>
           </div>
         </div>
         <div className="scroll mt-2">
           {showProjects ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {repos.map(r=> <ProjectCard key={r.html_url} repo={r} />)}
+              {(reposClient?.length? reposClient: repos).map(r=> <ProjectCard key={r.html_url} repo={r} />)}
             </div>
           ) : (
             <div className="muted">Projects are hidden by default — click “Show projects” to reveal a compact list.</div>

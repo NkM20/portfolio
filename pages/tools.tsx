@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
-import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind, IconNext, IconFirebase, IconMongo, IconMySQL, IconFlutter, IconKotlin, IconDuckDB, IconSalesforce, IconSAP, IconAssembly, IconPostgres} from '../components/Icons'
+import {IconJS, IconTS, IconReact, IconNode, IconDocker, IconPython, IconGit, IconTailwind, IconNext, IconFirebase, IconMongo, IconMySQL, IconFlutter, IconKotlin, IconDuckDB, IconSalesforce, IconSAP, IconAssembly, IconPostgres, IconFigma, IconVSCode} from '../components/Icons'
 
 export default function Tools(){
   const items = [
@@ -14,6 +14,8 @@ export default function Tools(){
     { name:'Python', icon:<IconPython className="w-10 h-10"/>, desc:'General-purpose language for scripts and AI', link:'https://www.python.org' },
     { name:'Docker', icon:<IconDocker className="w-10 h-10"/>, desc:'Containerization for apps and services', link:'https://www.docker.com' },
     { name:'Git', icon:<IconGit className="w-10 h-10"/>, desc:'Version control', link:'https://git-scm.com' },
+  { name:'VS Code', icon:<IconVSCode className="w-10 h-10"/>, desc:'Lightweight code editor by Microsoft', link:'https://code.visualstudio.com' },
+  { name:'Figma', icon:<IconFigma className="w-10 h-10"/>, desc:'Collaborative interface design tool', link:'https://www.figma.com' },
     { name:'Firebase', icon:<IconFirebase className="w-10 h-10"/>, desc:'Backend-as-a-service by Google', link:'https://firebase.google.com' },
   { name:'MongoDB', icon:<IconMongo className="w-10 h-10"/>, desc:'NoSQL database', link:'https://www.mongodb.com' },
   { name:'MySQL', icon:<IconMySQL className="w-10 h-10"/>, desc:'Relational database', link:'https://www.mysql.com' },

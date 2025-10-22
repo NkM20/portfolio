@@ -20,11 +20,12 @@
 }
 
 /* Light theme overrides */
+
 [data-theme="light"]{
 	--bg-900: #f3f6fb;
 	--bg-800: #eef2f8;
 	--panel: #ffffff;
-	--muted: #4b5563;
+	--muted: #374151;
 	--text: #0f172a;
 	--accent-crimson: #ef4444;
 	--accent-crimson-2: #b91c1c;
