@@ -1,14 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 // Logo will prefer a static image placed at /public/ghoul-eye.png
 // If the image is missing, it falls back to a simplified SVG eye.
-export default function Logo({className='w-14 h-14'}:{className?:string}){
+export default function Logo({ className = 'w-14 h-14' }: { className?: string }) {
+  const [loaded, setLoaded] = useState(false)
+  const [src, setSrc] = useState('/ghoul-eye.png')
   return (
     <div className={`logo ghoul ${className}`} aria-hidden>
-      <img src="/ghoul-eye.png" alt="NkM emblem" className="logo-img" onError={(e)=>{(e.target as HTMLImageElement).style.display='none'}} />
+      <img src={src} alt="NkM emblem" className="logo-img" style={{display: loaded? 'block':'none' }} onLoad={()=>setLoaded(true)} onError={()=>{ if(src !== '/components/ghoul-eye.png'){ setSrc('/components/ghoul-eye.png') } }} />
 
-      {/* fallback SVG (keeps visuals if image isn't available) */}
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="logo-svg fallback" aria-hidden>
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className={`logo-svg fallback ${loaded? 'hidden':''}`} aria-hidden>
         <defs>
           <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#1b0606"/>

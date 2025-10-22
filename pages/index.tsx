@@ -48,10 +48,11 @@ export default function Home({repos}:{repos:Repo[]}){
       </section>
 
       <section className="card mb-6">
-        <h2 className="text-xl font-semibold">Education & Experience</h2>
+        <h2 className="text-xl font-semibold">Timeline</h2>
         <div className="mt-3">
           <Timeline items={[
             {period: '2024 — Present', title: "MSc in Informatics", org: 'Instituto Politécnico de Bragança', details: 'Focus on Cloud, AI and Systems'},
+            {period: '2021 — 2025', title: "Bacharelado em Engenharia Informática", org: 'Instituto Politécnico de Bragança', details: 'Software Development, coursework & projects'},
             {period: 'Mar 2025 — May 2025', title: 'AI Research Intern', org: 'INFONET', details: 'Model development, experiments and deployment.'}
           ] as TimelineItem[]} />
         </div>

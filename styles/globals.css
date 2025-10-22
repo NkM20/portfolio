@@ -73,6 +73,15 @@ body{
 	.typing::after, .project-card, .skill-badge{animation:none;transition:none}
 }
 
+/* stagger utility for children */
+.stagger > *{opacity:0;transform:translateY(8px);animation:staggerUp .48s ease forwards}
+.stagger > *:nth-child(1){animation-delay:0.06s}
+.stagger > *:nth-child(2){animation-delay:0.12s}
+.stagger > *:nth-child(3){animation-delay:0.18s}
+.stagger > *:nth-child(4){animation-delay:0.24s}
+.stagger > *:nth-child(5){animation-delay:0.30s}
+@keyframes staggerUp{to{opacity:1;transform:none}}
+
 /* subtle entrance animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .animate-fade-up{animation:fadeUp 420ms cubic-bezier(.2,.9,.3,1) both}
@@ -94,6 +103,19 @@ body{
 .hero-vignette{box-shadow: inset 0 0 120px rgba(0,0,0,0.6)}
 .logo-eye .logo-iris{transition:opacity .28s ease, transform .28s ease}
 .logo:hover .logo-eye .logo-iris{opacity:1;transform:scale(1.15)}
+
+/* ghoul eye animations */
+.ghoul .iris{transform-origin:center;animation:iris-rotate 8s linear infinite}
+.ghoul .pupil{transform-origin:center;animation:pupil-pulse 2.6s ease-in-out infinite}
+.ghoul .veins path{stroke-dasharray:120;stroke-dashoffset:120;animation:vein-flow 6s linear infinite}
+
+@keyframes iris-rotate{0%{transform:rotate(0deg)}50%{transform:rotate(6deg) scale(1.02)}100%{transform:rotate(0deg)}}
+@keyframes pupil-pulse{0%{transform:scale(1)}50%{transform:scale(0.86)}100%{transform:scale(1)}}
+@keyframes vein-flow{0%{stroke-dashoffset:120}100%{stroke-dashoffset:0}}
+
+@media (prefers-reduced-motion: reduce){
+	.ghoul .iris,.ghoul .pupil,.ghoul .veins path{animation:none}
+}
 
 
 
