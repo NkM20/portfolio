@@ -2,6 +2,7 @@ import React from 'react'
 import {
   SiGithub,
   SiLinkedin,
+  SiGmail,
   SiJavascript,
   SiTypescript,
   SiReact,
@@ -25,6 +26,7 @@ import {
 // Brand-accurate wrappers (size inherits from className)
 export const IconGitHub = ({className='w-5 h-5'}: {className?:string}) => <SiGithub className={className} aria-hidden />
 export const IconLinkedIn = ({className='w-5 h-5'}:{className?:string}) => <SiLinkedin className={className} aria-hidden />
+export const IconGmail = ({className='w-5 h-5'}:{className?:string}) => <SiGmail className={className} aria-hidden />
 export const IconJS = ({className='w-5 h-5'}:{className?:string}) => <SiJavascript className={className} aria-hidden />
 export const IconTS = ({className='w-5 h-5'}:{className?:string}) => <SiTypescript className={className} aria-hidden />
 export const IconReact = ({className='w-5 h-5'}:{className?:string}) => <SiReact className={className} aria-hidden />

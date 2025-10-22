@@ -2,7 +2,8 @@ import Head from 'next/head'
 import type {GetStaticProps} from 'next'
 import fetchPinnedOrRecent from '../lib/github'
 import ProjectCard from '../components/ProjectCard'
-import {IconGitHub, IconLinkedIn, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconMySQL, IconOracle} from '../components/Icons'
+import {IconGitHub, IconLinkedIn, IconGmail, IconJS, IconTS, IconReact, IconNext, IconNode, IconPython, IconTailwind, IconDocker, IconGit, IconFirebase, IconMongo, IconMySQL, IconOracle} from '../components/Icons'
+import { FiSun, FiMoon } from 'react-icons/fi'
 import Timeline, {TimelineItem} from '../components/Timeline'
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
@@ -16,6 +17,7 @@ export default function Home({repos}:{repos:Repo[]}){
   const [text,setText] = useState('')
   const [showProjects,setShowProjects] = useState(false)
   const [intro,setIntro] = useState(false)
+  const [theme,setTheme] = useState<'dark'|'light'>('dark')
   const full = `> $ NkM@portfolio:~ echo "NkM — Full-Stack Developer"`
   useEffect(()=>{
     let i=0;const t=setInterval(()=>{setText(full.slice(0,++i));if(i>=full.length)clearInterval(t)},24);return ()=>clearInterval(t)
@@ -25,6 +27,23 @@ export default function Home({repos}:{repos:Repo[]}){
     const id = setTimeout(()=>setIntro(true),420)
     return ()=>clearTimeout(id)
   },[])
+
+  // theme: hydrate from localStorage and apply to <html>
+  useEffect(()=>{
+    if(typeof window === 'undefined') return
+    const saved = (localStorage.getItem('theme') as 'dark'|'light'|null) || 'dark'
+    setTheme(saved)
+    document.documentElement.setAttribute('data-theme', saved)
+  },[])
+
+  const toggleTheme = ()=>{
+    const next: 'dark'|'light' = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    if(typeof window !== 'undefined'){
+      document.documentElement.setAttribute('data-theme', next)
+      localStorage.setItem('theme', next)
+    }
+  }
 
   // add a class to reveal main sections after typing is finished
   useEffect(()=>{
@@ -73,6 +92,18 @@ export default function Home({repos}:{repos:Repo[]}){
               <p>I’m Fernando Marques, a passionate Junior Software Developer blending full-stack engineering, AI integration, and cloud development. My hands-on experience spans building mobile and web applications, designing robust backends, integrating cloud services (Firebase, Google Cloud), and delivering production-ready AI solutions like TaxBot — an EU tax advisory assistant.</p>
               <p className="mt-2">Beyond software delivery, I thrive on solving complex technical challenges, optimizing systems, and enhancing cybersecurity awareness, honed through Capture The Flag (CTF) competitions. I also enjoy sharing knowledge, having supported peers as a React Native tutor and collaborator.</p>
               <p className="mt-2">I’m eager to connect with teams and opportunities that value innovation, practical AI applications, and end-to-end product development.</p>
+            </div>
+          </section>
+
+          {/* Theme toggle card */}
+          <section id="theme" className="card col-span-2 lg:col-span-1 row-span-1 flex">
+            <h2 className="text-xl font-semibold">Appearance</h2>
+            <div className="flex-1 flex items-center justify-between mt-1">
+              <p className="muted">Switch between light and dark modes.</p>
+              <button onClick={toggleTheme} className="skill-badge flex items-center gap-2" aria-label="Toggle theme">
+                {theme === 'dark' ? <FiSun className="w-5 h-5"/> : <FiMoon className="w-5 h-5"/>}
+                <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+              </button>
             </div>
           </section>
 
@@ -165,12 +196,12 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <footer className="card col-span-2 lg:col-span-1 row-span-1">
+          <footer className="card col-span-2 lg:col-span-1 row-span-2">
             <h2 className="text-xl font-semibold">Contact</h2>
-            <div className="scroll mt-2 flex gap-2 flex-wrap">
-              <a className="skill-badge" href="mailto:you@example.com">Email</a>
-              <a className="skill-badge" href="https://github.com/NkM20" target="_blank" rel="noreferrer">GitHub</a>
-              <a className="skill-badge" href="https://www.linkedin.com/in/fjfmarques" target="_blank" rel="noreferrer">LinkedIn</a>
+            <div className="scroll mt-2 flex gap-2 flex-wrap items-center">
+              <a className="skill-badge flex items-center gap-2" href="mailto:nando.marques.dev@gmail.com"><IconGmail className="w-5 h-5"/> Gmail</a>
+              <a className="skill-badge flex items-center gap-2" href="https://github.com/NkM20" target="_blank" rel="noreferrer"><IconGitHub className="w-5 h-5"/> GitHub</a>
+              <a className="skill-badge flex items-center gap-2" href="https://www.linkedin.com/in/fjfmarques" target="_blank" rel="noreferrer"><IconLinkedIn className="w-5 h-5"/> LinkedIn</a>
             </div>
           </footer>
         </div>

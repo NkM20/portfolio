@@ -28,7 +28,7 @@ export default function Logo({ className = 'w-14 h-14' }: { className?: string }
 
   return (
     <div className={`logo ghoul ${className} ${played? 'played':''}`} aria-hidden>
-      <img src="/ghoul-eye.png" alt="NkM emblem" className="logo-img" onLoad={onLoad} onError={onError} />
+  <img src="/84252180ba216a9f2e7a9f02c5b951c5.jpg" alt="NkM red eye" className="logo-img" onLoad={onLoad} onError={onError} />
 
       <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className={`logo-svg fallback ${played? 'hidden':''}`} aria-hidden>
         <defs>
