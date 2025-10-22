@@ -118,9 +118,11 @@ export default function Home({repos}:{repos:Repo[]}){
             <h2 className="text-xl font-semibold">Appearance</h2>
             <div className="flex-1 flex items-center justify-between mt-1">
               <p className="muted">Switch between light and dark modes.</p>
-              <button onClick={toggleTheme} className="skill-badge flex items-center gap-2" aria-label="Toggle theme">
-                {theme === 'dark' ? <FiSun className="w-5 h-5"/> : <FiMoon className="w-5 h-5"/>}
-                <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+              <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
+                <FiMoon className="icon"/>
+                <FiSun className="icon"/>
+                <span className="sr-only">Toggle theme</span>
+                <span className="knob" style={{transform: theme==='dark'? 'translateX(0)' : 'translateX(60px)'}}/>
               </button>
             </div>
           </section>
