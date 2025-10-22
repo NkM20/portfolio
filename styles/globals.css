@@ -88,6 +88,14 @@ body{
 .logo-star{transform-origin:center;animation:logo-star 4s linear infinite}
 @keyframes logo-star{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(12deg)}100%{transform:translateY(0) rotate(0)}}
 
+/* Tokyo Ghoul motif */
+:root{--tokyo-crimson:#c62828}
+.hero-particles{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0.6}
+.hero-vignette{box-shadow: inset 0 0 120px rgba(0,0,0,0.6)}
+.logo-eye .logo-iris{transition:opacity .28s ease, transform .28s ease}
+.logo:hover .logo-eye .logo-iris{opacity:1;transform:scale(1.15)}
+
+
 
 
 

@@ -15,7 +15,11 @@ export default function Logo({className='w-12 h-12'}:{className?:string}){
           <rect x="0" y="0" width="96" height="84" rx="14" fill="#0b0b0f" stroke="rgba(255,255,255,0.04)" />
           <text x="48" y="52" fontFamily="Fira Code, monospace" fontSize="36" fill="#dbe7ef" textAnchor="middle">NkM</text>
           <g className="logo-star" transform="translate(78,10)">
-            <circle cx="0" cy="0" r="3" fill="#ffdf6b" />
+              <circle cx="0" cy="0" r="3" fill="#ffdf6b" />
+          </g>
+          <g className="logo-eye" transform="translate(48,48)">
+            <circle cx="0" cy="0" r="10" fill="rgba(0,0,0,0.85)" />
+            <circle className="logo-iris" cx="0" cy="0" r="4" fill="#c62828" opacity="0" />
           </g>
         </g>
       </svg>
