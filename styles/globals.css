@@ -1,54 +1,73 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root{
-	--bg-900: #060607;
+	/* Dark background tokens */
+	--bg-900: #050507;
 	--bg-800: #0b0b0f;
 	--panel: #0f1113;
 	--muted: #9aa3b2;
-	--text: #dbe7ef;
-	--accent-green: #39ff14;
-	--accent-purple: #b084ff;
+	--text: #e6eef6;
+	/* Tokyo-Ghoul crimson accents */
+	--accent-crimson: #d63a3a;
+	--accent-crimson-2: #b21b1b;
+	--accent-glow: rgba(214,58,58,0.12);
 	--glass: rgba(255,255,255,0.03);
 }
 
 /* Base layout */
 body{
-	background: radial-gradient(1200px 600px at 10% 10%, rgba(57,255,20,0.03), transparent), linear-gradient(180deg,var(--bg-800),var(--bg-900));
+	background: radial-gradient(1200px 600px at 12% 8%, rgba(198,24,24,0.02), transparent), linear-gradient(180deg,var(--bg-800),var(--bg-900));
 	color:var(--text);
 	-webkit-font-smoothing:antialiased;
 	-moz-osx-font-smoothing:grayscale;
-	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
-.cli-prompt{font-family: 'Fira Code', 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;color:var(--muted)}
-.typing{font-family: 'Fira Code', 'JetBrains Mono', monospace;color:var(--accent-green);font-size:1.6rem}
-.typing::after{content:'';display:inline-block;width:2px;height:1.05em;background:var(--accent-green);margin-left:8px;animation:caret 1s steps(2) infinite}
+.cli-prompt{font-family: 'JetBrains Mono', 'Fira Code', SFMono-Regular, Menlo, monospace;color:var(--muted)}
+.typing{font-family: 'JetBrains Mono', monospace;color:var(--accent-crimson);font-size:1.45rem}
+.typing::after{content:'';display:inline-block;width:2px;height:1.05em;background:var(--accent-crimson);margin-left:8px;animation:caret 1s steps(2) infinite}
 @keyframes caret{50%{opacity:0}}
 
-.card{background:linear-gradient(180deg,var(--panel),#070708);border:1px solid var(--glass);padding:1rem;border-radius:0.6rem;box-shadow:0 6px 20px rgba(2,6,9,0.6)}
+.card{background:linear-gradient(180deg,var(--panel),#070708);border:1px solid var(--glass);padding:1rem;border-radius:1.875rem;box-shadow:0 8px 26px rgba(2,6,9,0.6);overflow:hidden}
+
+/* Scrollable content area inside fixed-height cards */
+.card .scroll{max-height:calc(100% - 1.25rem);overflow:auto;padding-right:6px}
+.card .scroll::-webkit-scrollbar{width:6px}
+.card .scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:999px}
+
+/* Sidebar card tweaks */
+.card.sticky{position:sticky;top:4rem}
+
+.sidebar .skill-badge{width:100%;display:block;text-align:left}
+
+/* Top nav: translucent + blur like the reference */
+.top-nav{position:sticky;top:12px;z-index:40;padding:8px 12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);border-radius:14px}
 
 /* Hero & headings */
 .hero-title{font-family: 'Fira Code', monospace;font-size:2rem;color:var(--text);letter-spacing:0.4px}
 .hero-sub{color:var(--muted);font-family: 'Fira Code', monospace}
 
 /* project / skill visuals */
-.skill-badge{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:0.35rem 0.6rem;border-radius:8px;font-family:'Fira Code',monospace;color:#caa8ff;border:1px solid rgba(255,255,255,0.02);transition:transform .12s ease}
-.skill-badge:hover{transform:translateY(-3px)}
-.tech-badge{display:inline-block;background:linear-gradient(90deg,var(--accent-purple),var(--accent-green));padding:0.18rem 0.5rem;border-radius:999px;color:#071017;font-weight:600;font-size:0.75rem;margin-left:8px}
+.skill-badge{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:0.45rem 0.75rem;border-radius:10px;font-family:'Inter',sans-serif;color:var(--text);border:1px solid rgba(255,255,255,0.02);transition:transform .14s ease, box-shadow .14s ease}
+.skill-badge:hover{transform:translateY(-4px);box-shadow:0 12px 30px var(--accent-glow)}
+.skill-badge.active{background:rgba(214,58,58,0.08);border-color:rgba(214,58,58,0.18)}
+.tech-badge{display:inline-block;background:linear-gradient(90deg,var(--accent-crimson-2),var(--accent-crimson));padding:0.18rem 0.5rem;border-radius:999px;color:#071017;font-weight:600;font-size:0.75rem;margin-left:8px}
 
-.project-card{background:linear-gradient(180deg,#070708,#050506);border-left:4px solid rgba(57,255,20,0.06);padding:1rem;border-radius:8px;font-family:'Fira Code',monospace;position:relative;transition:transform .18s ease,box-shadow .18s ease}
-.project-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(2,6,9,0.7)}
-.project-card h3{color:var(--accent-purple)}
+.project-card{background:linear-gradient(180deg,#070708,#050506);border-left:4px solid rgba(198,24,24,0.12);padding:1.1rem;border-radius:10px;font-family:'JetBrains Mono',monospace;position:relative;transition:transform .18s ease,box-shadow .18s ease}
+.project-card:hover{transform:translateY(-8px);box-shadow:0 24px 70px rgba(2,6,9,0.75)}
+.project-card h3{color:var(--accent-crimson)}
 .meta{color:var(--muted);font-size:0.92rem}
 
 .console{background:transparent;color:var(--muted);margin:0;font-family:'Fira Code',monospace}
 .timeline-item{padding-left:12px;border-left:2px solid rgba(255,255,255,0.03);margin-bottom:12px}
 
 /* file explorer / code preview */
-.file-explorer{border-radius:8px;overflow:hidden;border:1px solid var(--glass);margin-top:8px;background:linear-gradient(180deg,#060607,#0a0a0b)}
+.file-explorer{border-radius:10px;overflow:hidden;border:1px solid var(--glass);margin-top:8px;background:linear-gradient(180deg,#060607,#0a0a0b)}
 .tabs{display:flex;gap:8px;padding:10px;background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent)}
 .tab{padding:6px 12px;border-radius:6px;background:transparent;color:var(--muted);font-family:'Fira Code',monospace;font-size:0.85rem}
 .tab.active{background:rgba(255,255,255,0.02);box-shadow:0 6px 18px rgba(0,0,0,0.6);color:var(--text)}
@@ -85,14 +104,23 @@ body{
 /* hero intro sequence */
 .intro-trigger .logo{transform:translateY(-6px) scale(.98);opacity:0}
 .intro-trigger .typing{opacity:0;transform:translateY(6px)}
-.intro-run .logo{animation:logo-intro 700ms cubic-bezier(.2,.9,.3,1) forwards}
-.intro-run .typing{animation:typing-intro 900ms cubic-bezier(.2,.9,.3,1) forwards 260ms}
+.intro-run .logo{animation:logo-intro 900ms cubic-bezier(.2,.9,.3,1) forwards}
+.intro-run .typing{animation:typing-intro 1000ms cubic-bezier(.2,.9,.3,1) forwards 260ms}
+
+/* when JS adds .show-sections to the document, stagger main sections into view */
+.show-sections .card{opacity:0;transform:translateY(12px);animation:card-show 560ms cubic-bezier(.2,.9,.3,1) forwards}
+.show-sections .card:nth-of-type(1){animation-delay:260ms}
+.show-sections .card:nth-of-type(2){animation-delay:340ms}
+.show-sections .card:nth-of-type(3){animation-delay:420ms}
+.show-sections .card:nth-of-type(4){animation-delay:500ms}
+.show-sections .card:nth-of-type(5){animation-delay:580ms}
+@keyframes card-show{to{opacity:1;transform:none}}
 @keyframes logo-intro{to{opacity:1;transform:none}}
 @keyframes typing-intro{to{opacity:1;transform:none}}
 
 /* project card hover crimson overlay */
-.project-card::after{content:'';position:absolute;inset:0;border-radius:8px;pointer-events:none;transition:background .22s ease}
-.project-card:hover::after{background:linear-gradient(180deg, rgba(198,24,24,0.06), rgba(198,24,24,0.02))}
+.project-card::after{content:'';position:absolute;inset:0;border-radius:10px;pointer-events:none;transition:background .22s ease}
+.project-card:hover::after{background:linear-gradient(180deg, var(--accent-glow), rgba(198,24,24,0.02))}
 
 /* subtle entrance animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -105,11 +133,39 @@ body{
 
 /* Logo / emblem */
 .logo{display:inline-block}
-.logo-svg{width:48px;height:48px}
+.logo-svg{width:56px;height:56px}
 .logo-star{transform-origin:center;animation:logo-star 4s linear infinite}
 @keyframes logo-star{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(12deg)}100%{transform:translateY(0) rotate(0)}}
 
+/* Logo image sizing + brush reveal mask */
+.logo-img{width:48px;height:48px;display:block;object-fit:cover;border-radius:6px}
+
+/* When the page intro runs, animate a brush-like mask across the loaded image
+	 and provide a coordinated reveal for the SVG fallback. Uses mask-image so
+	 the effect looks like a horizontal brush stroke sweeping left-to-right. */
+.intro-run .logo-img{
+	-webkit-mask-image: linear-gradient(90deg, transparent 0%, black 30%, black 70%, transparent 100%);
+	-webkit-mask-size: 220% 100%;
+	-webkit-mask-position: -100% 0;
+	mask-image: linear-gradient(90deg, transparent 0%, black 30%, black 70%, transparent 100%);
+	mask-size: 220% 100%;
+	mask-position: -100% 0;
+	animation: brush-reveal 820ms cubic-bezier(.2,.9,.3,1) forwards 160ms;
+}
+
+@keyframes brush-reveal{
+	to{ -webkit-mask-position: 120% 0; mask-position: 120% 0; }
+}
+
+/* SVG fallback small reveal (opacity + micro-transform) so it doesn't pop in abruptly */
+.intro-run .logo-svg.fallback{opacity:0;transform:translateY(-6px) scale(.98);animation:logo-fallback-reveal 820ms cubic-bezier(.2,.9,.3,1) forwards 120ms}
+@keyframes logo-fallback-reveal{to{opacity:1;transform:none}}
+
 /* Tokyo Ghoul motif */
+.logo-eye .logo-iris{transition:opacity .28s ease, transform .28s ease}
+.logo:hover .logo-eye .logo-iris{opacity:1;transform:scale(1.15)}
+
+/* tokyo crimson token retained for compatibility */
 :root{--tokyo-crimson:#c62828}
 .hero-particles{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0.6}
 .hero-vignette{box-shadow: inset 0 0 120px rgba(0,0,0,0.6)}
@@ -127,6 +183,42 @@ body{
 
 @media (prefers-reduced-motion: reduce){
 	.ghoul .iris,.ghoul .pupil,.ghoul .veins path{animation:none}
+}
+
+/* dotted background similar to reference */
+.masonry-root{background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 1px);background-size:24px 24px;padding:14px;border-radius:12px}
+
+/* Masonry grid (4 columns desktop to match static layout) */
+.masonry{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.masonry .container{grid-column:1 / -1}
+.masonry-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-rows:10px;gap:12px}
+.masonry-item{break-inside:avoid-column}
+.masonry-item .card{border-radius:1.875rem;padding:1rem}
+
+/* Card size tokens to match static site */
+.card.small{height:140px}
+.card.medium{min-height:260px}
+.card.large{min-height:340px}
+
+/* Tile image helper */
+.tile-img{width:100%;height:120px;border-radius:10px;background-size:cover;background-position:center;margin-bottom:10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02)}
+
+/* Hover/focus interactions for cards */
+.masonry-item .card{transition:transform .18s ease,box-shadow .18s ease}
+.masonry-item .card:focus-within,.masonry-item .card:focus{outline:3px solid rgba(214,58,58,0.12);outline-offset:6px}
+.masonry-item .card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 22px 44px rgba(2,6,9,0.7)}
+.masonry-item .card::after{content:'';position:absolute;inset:0;border-radius:1.875rem;pointer-events:none;transition:background .28s ease}
+.masonry-item .card:hover::after{background:linear-gradient(180deg, rgba(214,58,58,0.04), rgba(214,58,58,0.02))}
+
+/* Accessible focus state for action buttons */
+.skill-badge:focus{box-shadow:0 0 0 4px rgba(214,58,58,0.06)}
+
+/* Ordering helper: when data-col is used the JS will set gridColumnStart; this rule ensures visual stability */
+.masonry-item[data-col]{z-index:2}
+
+/* small responsive tweaks */
+@media (min-width:1024px){
+	.masonry-grid{grid-template-columns:repeat(3,1fr);gap:14px}
 }
 
 
