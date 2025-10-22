@@ -49,8 +49,8 @@ export default function Home({repos}:{repos:Repo[]}){
 
     <div className="masonry-root">
       <div className="max-w-5xl mx-auto px-4 lg:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <header className="card hero-vignette col-span-2 lg:col-span-2 h-[280px]" style={{position:'relative',overflow:'hidden'}}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <header className="card hero-vignette col-span-2 lg:col-span-2 h-[260px]" style={{position:'relative',overflow:'hidden'}}>
           <Particles />
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -67,7 +67,7 @@ export default function Home({repos}:{repos:Repo[]}){
           </div>
           </header>
 
-          <section id="about" className="card col-span-2 lg:col-span-1 h-[280px]">
+          <section id="about" className="card col-span-2 lg:col-span-1 h-[260px]">
             <h2 className="text-xl font-semibold">About</h2>
             <div className="scroll text-sm leading-relaxed mt-2 text-gray-300">
               <p>I’m Fernando Marques, a passionate Junior Software Developer blending full-stack engineering, AI integration, and cloud development. My hands-on experience spans building mobile and web applications, designing robust backends, integrating cloud services (Firebase, Google Cloud), and delivering production-ready AI solutions like TaxBot — an EU tax advisory assistant.</p>
@@ -76,7 +76,7 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <section id="timeline" className="card col-span-2 lg:col-span-1 h-[280px]">
+          <section id="timeline" className="card col-span-2 lg:col-span-1 h-[260px]">
             <h2 className="text-xl font-semibold">Timeline</h2>
             <div className="scroll mt-3">
               <Timeline items={[
@@ -87,7 +87,7 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <section id="skills" className="card col-span-2 lg:col-span-1 h-[560px]">
+          <section id="skills" className="card col-span-2 lg:col-span-1 h-[520px]">
           <h2 className="text-xl font-semibold">Skills & Stack</h2>
           <div className="mt-3">
           <h4 className="text-sm muted">Languages</h4>
@@ -117,7 +117,7 @@ export default function Home({repos}:{repos:Repo[]}){
         </div>
           </section>
 
-          <section id="projects" className="card col-span-2 lg:col-span-2 h-[280px]">
+          <section id="projects" className="card col-span-2 lg:col-span-2 h-[260px]">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Projects</h2>
           <div>
@@ -133,7 +133,7 @@ export default function Home({repos}:{repos:Repo[]}){
         )}
           </section>
 
-          <section id="experience" className="card col-span-2 lg:col-span-1 h-[280px]">
+          <section id="experience" className="card col-span-2 lg:col-span-1 h-[260px]">
             <h2 className="text-xl font-semibold">Experience</h2>
             <div className="scroll mt-3">
               <div className="timeline-item">
@@ -143,7 +143,7 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <section id="education" className="card col-span-2 lg:col-span-1 h-[280px]">
+          <section id="education" className="card col-span-2 lg:col-span-1 h-[260px]">
             <h2 className="text-xl font-semibold">Education & Certifications</h2>
             <div className="scroll">
               <div className="mt-3 timeline-item">
@@ -161,7 +161,7 @@ export default function Home({repos}:{repos:Repo[]}){
             </div>
           </section>
 
-          <footer className="card col-span-2 lg:col-span-1 h-[140px]">
+          <footer className="card col-span-2 lg:col-span-1 h-[120px]">
             <pre className="console">Contact: you@example.com | GitHub: https://github.com/NkM20</pre>
           </footer>
         </div>

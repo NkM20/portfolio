@@ -29,7 +29,7 @@ body{
 }
 
 .cli-prompt{font-family: 'JetBrains Mono', 'Fira Code', SFMono-Regular, Menlo, monospace;color:var(--muted)}
-.typing{font-family: 'JetBrains Mono', monospace;color:var(--accent-crimson);font-size:1.45rem}
+.typing{font-family: 'JetBrains Mono', monospace;color:var(--accent-crimson);font-size:1.35rem}
 .typing::after{content:'';display:inline-block;width:2px;height:1.05em;background:var(--accent-crimson);margin-left:8px;animation:caret 1s steps(2) infinite}
 @keyframes caret{50%{opacity:0}}
 
